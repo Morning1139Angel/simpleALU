@@ -26,28 +26,28 @@ module alu_tb;
   initial begin
     $monitor("Accumulator = %h, Flags = %b", accumulator, flags);
     
-    // Test case 1: HOLD
-    in = 0;
-    control = HOLD;
-    #10;
-
-    // Test case 2: CLEAR
-    in = 0;
-    control = CLEAR;
-    #10;
-
-    // Test case 3: ADD
+    // Test case 1: ADD
     in = 5;
     control = ADD;
     #10;
 
-    // Test case 4: SUB
+    // Test case 2: HOLD
+    in = 0;
+    control = HOLD;
+    #10;
+
+    // Test case 3: SUB
     in = 3;
     control = SUB;
     #10;
-    // Test case 5: NEG
+    // Test case 4: NEG
     in = 0;
     control = NEG;
+    #10;
+
+    // Test case 5: CLEAR
+    in = 0;
+    control = CLEAR;
     #10;
 
     // Test case 6: NOT
