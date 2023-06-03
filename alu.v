@@ -14,7 +14,7 @@ module alu #(parameter WIDTH = 8)
     assign acc_sign  = accumulator[WIDTH-1];
     assign in_sign   = in[WIDTH-1];
     assign temp_sign = tempResult[WIDTH-1];
-    assign zero      = ~&accumulator;
+    assign zero      = ~|accumulator;
     
     assign flags = {carry, zero, overflow, acc_sign};
     
