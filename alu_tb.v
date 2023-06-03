@@ -73,4 +73,10 @@ module alu_tb;
 
     $finish;
   end
+
+  initial begin
+        $dumpfile("./vcd/alu.vcd");
+        $dumpvars(0, alu_tb);
+    end
+    
 endmodule
