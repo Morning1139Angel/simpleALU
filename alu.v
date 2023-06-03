@@ -8,12 +8,11 @@ module alu #(parameter WIDTH = 8)
     `include "alu_instruction_codes.v"
     
     reg[WIDTH-1:0] tempResult;
-    reg carry, overflow;
-    wire acc_sign, in_sign, temp_sign, zero;
+    reg carry, overflow, temp_sign;
+    wire acc_sign, in_sign, zero;
     
     assign acc_sign  = accumulator[WIDTH-1];
     assign in_sign   = in[WIDTH-1];
-    assign temp_sign = tempResult[WIDTH-1];
     assign zero      = ~|accumulator;
     
     assign flags = {carry, zero, overflow, acc_sign};
@@ -38,11 +37,13 @@ module alu #(parameter WIDTH = 8)
             end
             ADD : begin
                 {carry, tempResult} = accumulator + in;
+                temp_sign = tempResult[WIDTH-1];
                 overflow            = (in_sign != acc_sign) ? 0 : (temp_sign ^ acc_sign);
                 accumulator <= tempResult;
             end
             SUB : begin
                 {carry, tempResult} = accumulator - in;
+                temp_sign = tempResult[WIDTH-1];
                 overflow            = (in_sign == acc_sign) ? 0 : (temp_sign ^ acc_sign);
                 accumulator <= tempResult;
             end
