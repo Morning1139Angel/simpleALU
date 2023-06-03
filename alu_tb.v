@@ -1,3 +1,5 @@
+`include "alu.v"
+
 module alu_tb;
   parameter WIDTH = 8;
   parameter HOLD = 0;
