@@ -65,6 +65,36 @@ module alu_tb;
     control = AND;
     #10;
 
+    // Test case 9: possitive SUM overflow
+    //store 120 = 01111000 
+    in = 0;
+    control = CLEAR;
+    #10;
+
+    in = 120;
+    control = ADD;
+    #10;
+
+    // add 57 = 00111001
+    in = 57;
+    control = ADD;
+    #10;
+
+
+    // Test case 10: negative SUM overflow
+    //store -120 = 10001000 
+    in = 0;
+    control = CLEAR;
+    #10;
+
+    in = -120;
+    control = ADD;
+    #10;
+
+    // add -57 = 11001001
+    in = -57;
+    control = ADD;
+    #10;
 
     $finish;
   end
